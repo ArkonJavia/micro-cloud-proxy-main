@@ -1,0 +1,24 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: micro-cloud-proxy
+eureka:  
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    instance:
+      preferIpAddress: true
+      
+zuul:
+  routes:
+    ecommerce:
+      #path: /ecommerce/**  # OPTIONAL element, instead uses root element. 
+      service-id : micro-api-ecommerce
+    backoffice:      
+      #url : http://192.168.1.78:53220/  # OPTIONAL element,  instead uses root element.
+      service-id: micro-api-backoffice   
+
+
